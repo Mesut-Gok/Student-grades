@@ -1,0 +1,39 @@
+#  C++ build artifacts
+*.o
+*.obj
+*.exe
+*.out
+*.log
+*.a
+*.so
+*.dll
+
+#  Build directories
+/build/
+/bin/
+/Debug/
+/Release/
+/CMakeFiles/
+/cmake-build-*/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sln
+*.vcxproj
+*.user
+*.DS_Store
+
+#  Backup and temp files
+*~
+*.swp
+*.tmp
+
+#  Test or generated data files
+Students.txt
+*.csv
+*.dat
+
+#  Package or dependency folders (if any)
+node_modules/
+.env
