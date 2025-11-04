@@ -1,42 +1,48 @@
 #include "Person.h"
+#include <fstream>
+#include <sstream>
 #include <vector>
+#include <algorithm>
+#include <iostream>
 
 int main() {
-    int n;
-    std::cout << "Enter number of students: ";
-    std::cin >> n;
+    std::ifstream file("Students.txt");
+    if (!file) {
+        std::cerr << "Error: Could not open Students.txt\n";
+        return 1;
+    }
+
+    std::string line;
+    std::getline(file, line); // Skip header
 
     std::vector<Person> students;
-    for (int i = 0; i < n; ++i) {
+
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        std::string name, surname;
+        std::vector<double> hw(5);
+        double exam;
+
+        iss >> name >> surname;
+        for (int i = 0; i < 5; ++i) iss >> hw[i];
+        iss >> exam;
+
         Person p;
-
-        char autoGen;
-        std::cout << "Generate scores randomly? (y/n): ";
-        std::cin >> autoGen;
-
-        if (autoGen == 'y') {
-            int hwCount;
-            std::cout << "How many homework scores to generate? ";
-            std::cin >> hwCount;
-            p.generateRandomScores(hwCount);
-        } else {
-            std::cin >> p;
-        }
-
-        char choice;
-        std::cout << "Calculate final grade using median (m) or average (a)? ";
-        std::cin >> choice;
-        p.calculateFinalGrade(choice == 'm');
-
+        p.setData(name, surname, hw, exam);
+        p.calculateGrades();
         students.push_back(p);
     }
 
-    std::cout << "\nName        Surname     Final_Point     Method\n";
-    std::cout << "-----------------------------------------------\n";
-    for (const auto& student : students) {
-        std::cout << student << std::endl;
+    std::sort(students.begin(), students.end(),
+              [](const Person& a, const Person& b) {
+                  return a.getSurname() < b.getSurname();
+              });
+
+    std::cout << "Name      Surname      Final (Avg.) | Final (Med.)\n";
+    std::cout << "----------------------------------------------------\n";
+    for (const auto& s : students) {
+        std::cout << s << '\n';
     }
 
     return 0;
 }
-

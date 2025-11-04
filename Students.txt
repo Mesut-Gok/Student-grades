@@ -1,0 +1,6 @@
+Sample Students.txt
+Code
+Name        Surname     HW1 HW2 HW3 HW4 HW5 Exam
+Alice       Johnson       8   9  10   6  10    9
+Bob         Smith         7  10   8   5   4    6
+Charlie     Adams         9   8   7   9   8    10

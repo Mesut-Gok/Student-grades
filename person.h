@@ -11,8 +11,8 @@ private:
     std::string surname;
     std::vector<double> homework;
     double exam;
-    double finalGrade;
-    std::string methodUsed;
+    double finalAvg;
+    double finalMed;
 
 public:
     Person();
@@ -20,15 +20,17 @@ public:
     Person& operator=(const Person& other);
     ~Person();
 
-    friend std::istream& operator>>(std::istream& in, Person& p);
     friend std::ostream& operator<<(std::ostream& out, const Person& p);
 
-    void calculateFinalGrade(bool useMedian);
-    void generateRandomScores(int hwCount);
+    void setData(const std::string& name, const std::string& surname,
+                 const std::vector<double>& hw, double examScore);
+    void calculateGrades();
 
-    double getFinalGrade() const { return finalGrade; }
     std::string getFirstName() const { return firstName; }
     std::string getSurname() const { return surname; }
+    double getFinalAvg() const { return finalAvg; }
+    double getFinalMed() const { return finalMed; }
 };
 
 #endif
+
