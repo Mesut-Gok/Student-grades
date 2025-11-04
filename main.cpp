@@ -9,7 +9,19 @@ int main() {
     std::vector<Person> students;
     for (int i = 0; i < n; ++i) {
         Person p;
-        std::cin >> p;
+
+        char autoGen;
+        std::cout << "Generate scores randomly? (y/n): ";
+        std::cin >> autoGen;
+
+        if (autoGen == 'y') {
+            int hwCount;
+            std::cout << "How many homework scores to generate? ";
+            std::cin >> hwCount;
+            p.generateRandomScores(hwCount);
+        } else {
+            std::cin >> p;
+        }
 
         char choice;
         std::cout << "Calculate final grade using median (m) or average (a)? ";
@@ -19,8 +31,8 @@ int main() {
         students.push_back(p);
     }
 
-    std::cout << "\nName        Surname     Final_Point(Aver.)\n";
-    std::cout << "-------------------------------------------\n";
+    std::cout << "\nName        Surname     Final_Point     Method\n";
+    std::cout << "-----------------------------------------------\n";
     for (const auto& student : students) {
         std::cout << student << std::endl;
     }
