@@ -31,7 +31,7 @@ Name2 Surname2         y.yy         | z.zz
 - Commit results and create **Release v0.1**.
 
 
-## 📝 Task Nr. 2 (Release v0.2 / v0.25)
+## Task Nr. 2 (Release v0.2 / v0.25)
 ### Refactoring
 - Reorganize code into multiple files:
 - `Person.h/.cpp`, `IO.h/.cpp`, `Generation.h/.cpp`, `Processing.h/.cpp`, `Timing.h/.cpp`, `Exceptions.h`
@@ -64,11 +64,6 @@ Name2 Surname2         y.yy         | z.zz
 - `std::vector` → Release v0.2
 - `std::list` and `std::deque` → Release v0.25
 
-##  How to Run
-1. Clone repository:
-   ```bash
-   git clone https://github.com/yourusername/Student-grades.git
-   cd student-grades
 
 
 
