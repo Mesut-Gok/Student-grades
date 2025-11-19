@@ -129,6 +129,7 @@ std::ostream& operator<<(std::ostream& os, const Person& p) {
 
 os << left << setw(15) << p.firstname << setw(15) << p.surname
              << fixed << setprecision(2) << setw(20) << p.FinalgradeAvg  <<setw(5) << "|" << setprecision(2)<< p.FinalgradeMed << endl;
+             return os;
 }
 
 std::istream& operator>>(std::istream& is, Person& p)
